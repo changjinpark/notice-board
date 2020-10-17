@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.myboard.service.BoardService;
 import com.myboard.vo.boardVO;
 
 @RequestMapping(value = "/board/*")
@@ -19,7 +22,10 @@ import com.myboard.vo.boardVO;
 public class BoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-
+	
+	@Inject
+	BoardService boardService;
+	
 	//게시글 작성 화면
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String write() {
@@ -32,7 +38,7 @@ public class BoardController {
 		logger.info("title {}",vo.getTitle());
 		logger.info("content {}",vo.getContent());
 		logger.info("writer {}",vo.getWriter());
-		//boardService.create(vo)
+		boardService.create(vo);
 		return "redirect:list.do";
 	}
 	

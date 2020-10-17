@@ -3,8 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.example.mapper.boardMapper">
+<mapper namespace="board">
 
+	<insert id ="insert">
+		insert into tb_board (
+			title,
+			content,
+			writer
+		) values (
+			#{title},
+			#{content},
+			#{writer}
+		)					
+	</insert>
     
 </mapper>
 
