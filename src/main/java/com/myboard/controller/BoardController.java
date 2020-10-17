@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.myboard.service.BoardService;
 import com.myboard.vo.boardVO;
@@ -26,13 +27,13 @@ public class BoardController {
 	@Inject
 	BoardService boardService;
 	
-	//�Խñ� �ۼ� ȭ��
+	//게시글 작성 화면
 	@RequestMapping(value = "write.do", method = RequestMethod.GET)
 	public String write() {
-		return "board/write"; //write.jsp�� �̵�
+		return "board/write"; //write.jsp로 이동
 	}
 	
-	//�Խñ� �ۼ� ó��
+	//게시글 작성 처리
 	@RequestMapping(value = "insert.do", method = RequestMethod.POST)
 	public String insert(@ModelAttribute boardVO vo) throws Exception{
 		logger.info("title {}",vo.getTitle());
@@ -42,4 +43,14 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	
+	//게시글 목록 화면
+	@RequestMapping(value = "list.do")
+	public ModelAndView list() throws Exception{
+				
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/list"); // 뷰를 list.jsp로 설정
+		//mav.addObject("list", list)// 데이터를 저장
+		return mav;
+	}
+
 }
