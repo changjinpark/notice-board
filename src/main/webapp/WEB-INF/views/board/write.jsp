@@ -2,7 +2,36 @@
 <%@ page session="false" contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-	<title>게시글 작성</title>
+<title>게시글 작성</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#btnSave").click(function(){
+			var title = $("#title").val();
+			var content = $("#content").val();
+			var writer = $("#writer").val();
+			console.log("title : ", title);
+			console.log("title : ", content);
+			console.log("title : ", writer);
+			if(title == ""){
+				alert("제목을 입력하세요");
+				document.form1.title.focus();
+				return;
+			}
+			if(content == ""){
+				alert("내용을 입력하세요");
+				document.form1.title.focus();
+				return;
+			}
+			if(writer == ""){
+				alert("이름을 입력하세요");
+				document.form1.title.focus();
+				return;
+			}
+			document.form1.submit();
+		});
+	});
+</script>
 </head>
 <body>
 <h2>게시글 작성</h2>

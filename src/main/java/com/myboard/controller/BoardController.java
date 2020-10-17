@@ -29,7 +29,9 @@ public class BoardController {
 	//게시글 작성 처리
 	@RequestMapping(value = "insert.do", method = RequestMethod.POST)
 	public String insert(@ModelAttribute boardVO vo) throws Exception{
-		
+		logger.info("title {}",vo.getTitle());
+		logger.info("content {}",vo.getContent());
+		logger.info("writer {}",vo.getWriter());
 		//boardService.create(vo)
 		return "redirect:list.do";
 	}
