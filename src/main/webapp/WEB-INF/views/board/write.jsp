@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>게시글 작성</h2>
-<form name="form1" method="post" action="${path}/board/insert.do">
+<form name="form1" method="post" action="${path}/notice_board/board/insert.do">
 <div>
 제목
 <input name="title" id="title" placeholder="제목을 입력해주세요">
