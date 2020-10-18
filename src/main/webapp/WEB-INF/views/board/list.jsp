@@ -6,7 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 목록</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#btnWrite").click(function(){
+			location.href = "${path}/notice_board/board/write.do";
+			//페이지 주소 이동
+		});
+	});
+</script>
 </head>
 <body>
 <h2>게시글 목록</h2>
