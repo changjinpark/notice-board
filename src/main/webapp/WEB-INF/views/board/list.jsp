@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- forEach 사용하려면 JSTL/core 라이브러리 필요 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %><!-- fmt 사용하려면 JSTL/fmt 라이브러리 필요 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +19,13 @@
 <th>작성일</th>
 <th>조회수</th>
 </tr>
-<c:forEach var="row" items="${list}">
+<c:forEach var="var" items="${list}">
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>${var.id}</td>
+<td>${var.title}</td>
+<td>${var.writer}</td>
+<td><fmt:formatDate value="${var.write_date}" pattern="yyyy-mm-dd HH:mm:ss"/></td>
+<td>${var.view_count}</td>
 </tr>
 </c:forEach>
 </table>

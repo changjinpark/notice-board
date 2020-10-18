@@ -1,5 +1,7 @@
 package com.myboard.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -21,5 +23,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void create(boardVO vo) throws Exception{
 		boardDao.create(vo);
+	}
+	
+	@Override
+	public List<boardVO> listAll() throws Exception{	
+		return boardDao.listAll();
 	}
 }

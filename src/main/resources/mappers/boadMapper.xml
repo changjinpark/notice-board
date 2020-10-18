@@ -16,6 +16,20 @@
 			#{writer}
 		)					
 	</insert>
+	
+	<select id = "listAll" resultType="com.myboard.vo.boardVO">
+		select
+			id,
+			title,
+			content,
+			writer,
+			write_date,
+			view_count
+		from
+			tb_board
+		order by	
+			id desc
+	</select>
     
 </mapper>
 
