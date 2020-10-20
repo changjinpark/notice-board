@@ -12,4 +12,7 @@ public interface BoardService {
 	//게시글 목록
 	public List<boardVO> listAll() throws Exception;
 
+	//게시글 상세보기
+	public boardVO read(int id) throws Exception;
+
 }

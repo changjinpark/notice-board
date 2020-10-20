@@ -29,4 +29,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<boardVO> listAll() throws Exception{	
 		return boardDao.listAll();
 	}
+	
+	@Override
+	public boardVO read(int id) throws Exception{
+		return boardDao.read(id);
+	}
 }

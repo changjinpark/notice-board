@@ -31,7 +31,7 @@
 <c:forEach var="var" items="${list}">
 <tr>
 <td>${var.id}</td>
-<td>${var.title}</td>
+<td><a href="${path}/notice_board/board/view.do?id=${var.id}">${var.title}</a></td>
 <td>${var.writer}</td>
 <td><fmt:formatDate value="${var.write_date}" pattern="yyyy-mm-dd HH:mm:ss"/></td>
 <td>${var.view_count}</td>

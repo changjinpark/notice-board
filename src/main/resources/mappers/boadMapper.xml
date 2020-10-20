@@ -30,6 +30,19 @@
 		order by	
 			id desc
 	</select>
+	
+	<select id = "read" resultType="com.myboard.vo.boardVO">
+		select
+			title,
+			content,
+			writer,
+			write_date,
+			view_count
+		from
+			tb_board
+		where
+			id=${id}
+	</select>
     
 </mapper>
 

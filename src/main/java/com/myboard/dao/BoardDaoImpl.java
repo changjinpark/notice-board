@@ -30,4 +30,9 @@ public class BoardDaoImpl implements BoardDao {
 		return SqlSession.selectList("board.listAll");
 	}
 	
+	@Override
+	public boardVO read(int id) {
+		return SqlSession.selectOne("board.read", id);
+	}
+	
 }

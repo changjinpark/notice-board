@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myboard.service.BoardService;
@@ -52,6 +53,17 @@ public class BoardController {
 		mav.setViewName("board/list"); // 뷰를 list.jsp로 설정
 		mav.addObject("list", list);// 데이터를 저장
 		return mav;//list.jsp로 list가 전달된다.
+	}
+	
+	//게시글 상세 내용 조회
+	//RequestParam : get/post 방식으로 전달된 변수
+	@RequestMapping(value = "view.do", method=RequestMethod.GET)
+	public ModelAndView view(@RequestParam int id) throws Exception{
+			
+		ModelAndView mav = new ModelAndView();//model(데이터)과 view(화면)을 함께 전달하는 객체
+		mav.setViewName("board/view"); // 뷰를 view.jsp로 설정
+		mav.addObject("vo", boardService.read(id));// 데이터를 저장
+		return mav;//view.jsp로 객체가 전달된다.
 	}
 
 }
