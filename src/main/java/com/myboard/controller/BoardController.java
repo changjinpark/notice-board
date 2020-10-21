@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,13 +58,29 @@ public class BoardController {
 	
 	//게시글 상세 내용 조회
 	//RequestParam : get/post 방식으로 전달된 변수
+	//HttpSession 세션 객체
 	@RequestMapping(value = "view.do", method=RequestMethod.GET)
-	public ModelAndView view(@RequestParam int id) throws Exception{
-			
+	public ModelAndView view(@RequestParam int id, HttpSession session) throws Exception{
+		//boardService.increaseViewCount(id, session);	게시글 조회수 증가
 		ModelAndView mav = new ModelAndView();//model(데이터)과 view(화면)을 함께 전달하는 객체
 		mav.setViewName("board/view"); // 뷰를 view.jsp로 설정
 		mav.addObject("vo", boardService.read(id));// 데이터를 저장
 		return mav;//view.jsp로 객체가 전달된다.
+	}
+	
+	//게시글 수정
+	@RequestMapping(value = "update.do", method=RequestMethod.POST)
+	public String delete(@ModelAttribute boardVO vo) throws Exception{
+		boardService.update(vo);
+		return "redirect:list.do";//list.jsp로 객체가 전달된다.
+	}
+	
+	//게시글 삭제
+	@RequestMapping(value = "delete.do", method=RequestMethod.POST)
+	public String delete(@RequestParam int id) throws Exception{
+		logger.info("아이디 {}", id);
+		boardService.delete(id);
+		return "redirect:list.do";//list.jsp로 객체가 전달된다.
 	}
 
 }

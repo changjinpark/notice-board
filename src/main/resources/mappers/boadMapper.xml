@@ -33,6 +33,7 @@
 	
 	<select id = "read" resultType="com.myboard.vo.boardVO">
 		select
+			id,
 			title,
 			content,
 			writer,
@@ -41,8 +42,21 @@
 		from
 			tb_board
 		where
-			id=${id}
+			id=#{id}
 	</select>
+    
+    <update id="update">    
+    	update tb_board set 
+    	title=#{title},
+    	content=#{content},
+    	writer=#{writer}
+    	where id = #{id}   
+    </update>
+    
+    <delete id = "delete" >
+    	delete from tb_board
+    	where id = #{id}   
+    </delete>
     
 </mapper>
 

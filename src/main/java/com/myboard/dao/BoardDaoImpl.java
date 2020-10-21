@@ -31,8 +31,23 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
-	public boardVO read(int id) {
+	public boardVO read(int id) throws Exception {
 		return SqlSession.selectOne("board.read", id);
+	}
+	
+	@Override
+	public void increaseViewCount() throws Exception{
+
+	}
+	
+	@Override
+	public void update(boardVO vo) throws Exception{
+		SqlSession.update("board.update",vo);
+	}
+	
+	@Override
+	public void delete(int id) throws Exception{
+		SqlSession.delete("board.delete", id);
 	}
 	
 }

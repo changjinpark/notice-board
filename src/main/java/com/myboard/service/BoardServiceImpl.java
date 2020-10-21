@@ -3,6 +3,7 @@ package com.myboard.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,5 +34,20 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boardVO read(int id) throws Exception{
 		return boardDao.read(id);
+	}
+	
+	@Override
+	public void increaseViewCount(int id, HttpSession session) throws Exception{
+	}
+	
+	
+	@Override
+	public void update(boardVO vo) throws Exception{
+		boardDao.update(vo);
+	}
+	
+	@Override
+	public void delete(int id) throws Exception{
+		boardDao.delete(id);
 	}
 }

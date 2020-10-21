@@ -10,5 +10,12 @@ public interface BoardDao {
 
 	public List<boardVO> listAll() throws Exception;
 
-	public boardVO read(int id);
+	public boardVO read(int id) throws Exception;
+
+	public void increaseViewCount() throws Exception;
+
+	public void update(boardVO vo) throws Exception;
+
+	public void delete(int id) throws Exception;
+
 }
