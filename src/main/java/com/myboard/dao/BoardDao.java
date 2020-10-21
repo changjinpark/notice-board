@@ -12,7 +12,7 @@ public interface BoardDao {
 
 	public boardVO read(int id) throws Exception;
 
-	public void increaseViewCount() throws Exception;
+	public void increaseViewCount(int id) throws Exception;
 
 	public void update(boardVO vo) throws Exception;
 

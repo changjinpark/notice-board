@@ -61,7 +61,7 @@ public class BoardController {
 	//HttpSession 세션 객체
 	@RequestMapping(value = "view.do", method=RequestMethod.GET)
 	public ModelAndView view(@RequestParam int id, HttpSession session) throws Exception{
-		//boardService.increaseViewCount(id, session);	게시글 조회수 증가
+		boardService.increaseViewCount(id, session);	//게시글 조회수 증가
 		ModelAndView mav = new ModelAndView();//model(데이터)과 view(화면)을 함께 전달하는 객체
 		mav.setViewName("board/view"); // 뷰를 view.jsp로 설정
 		mav.addObject("vo", boardService.read(id));// 데이터를 저장

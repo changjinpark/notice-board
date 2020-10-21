@@ -38,9 +38,18 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void increaseViewCount(int id, HttpSession session) throws Exception{
+		long update_time = 0;
+		if(session.getAttribute("update_time"+id) != null) {
+			update_time =(long)session.getAttribute("update_time"+id);
+		}
+		long current_time = System.currentTimeMillis();//시스템의 현재 시간
+		
+		if(current_time - update_time > 5*1000) {//시스템 현재시간 - 열람시간 > 조회수 증가 가능하도록 지정한 시간
+			boardDao.increaseViewCount(id);
+			session.setAttribute("update_time"+id, current_time);
+		}
 	}
-	
-	
+		
 	@Override
 	public void update(boardVO vo) throws Exception{
 		boardDao.update(vo);

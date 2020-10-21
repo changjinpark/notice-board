@@ -44,6 +44,11 @@
 		where
 			id=#{id}
 	</select>
+	<update id="increaseViewCount">
+		update tb_board set
+		view_count = view_count+1
+		where id = #{id}	
+	</update>
     
     <update id="update">    
     	update tb_board set 

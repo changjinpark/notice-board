@@ -36,8 +36,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
-	public void increaseViewCount() throws Exception{
-
+	public void increaseViewCount(int id) throws Exception{
+		SqlSession.update("board.increaseViewCount", id);
 	}
 	
 	@Override
